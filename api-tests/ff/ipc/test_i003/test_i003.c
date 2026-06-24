@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,7 +77,7 @@ int32_t client_test_zero_length_invec(caller_security_t caller __UNUSED)
        status = VAL_STATUS_WRITE_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -129,7 +129,7 @@ int32_t client_test_zero_length_outvec(caller_security_t caller __UNUSED)
        status = VAL_STATUS_WRITE_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -215,7 +215,7 @@ int32_t client_test_call_and_write(caller_security_t caller __UNUSED)
         }
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -270,7 +270,7 @@ int32_t client_test_overlapping_vectors(caller_security_t caller __UNUSED)
        status = VAL_STATUS_CALL_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -338,7 +338,7 @@ int32_t client_test_zero_length_invec(caller_security_t caller __UNUSED)
        status = VAL_STATUS_WRITE_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -397,7 +397,7 @@ int32_t client_test_zero_length_outvec(caller_security_t caller __UNUSED)
        status = VAL_STATUS_WRITE_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -500,7 +500,7 @@ int32_t client_test_call_and_write(caller_security_t caller __UNUSED)
         }
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }
@@ -591,7 +591,7 @@ int32_t client_test_overlapping_vectors(caller_security_t caller __UNUSED)
        status = VAL_STATUS_CALL_FAILED;
    }
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tpsa_call failed. status=%x\n", status);
    }

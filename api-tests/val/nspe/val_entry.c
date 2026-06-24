@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,19 +33,19 @@ int32_t val_entry(void)
 
     /* Init platform specific informations*/
     status = val_platform_init();
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         goto exit;
     }
 
     status = val_uart_init();
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         goto exit;
     }
 
     status = val_get_last_run_test_id(&test_id);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         goto exit;
     }

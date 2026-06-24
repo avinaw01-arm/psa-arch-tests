@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,7 +98,7 @@ void driver_main(void)
                         psa_read(msg.handle, 2, &data, msg.in_size[2]);
                         fn_status = val_print_sf(ALWAYS, string, data);
                     }
-                    if (VAL_ERROR(fn_status))
+                    if (VAL_IS_ERROR(fn_status))
                     {
                         psa_reply(msg.handle, VAL_STATUS_ERROR);
                     }
@@ -505,7 +505,7 @@ void driver_test_isolation_psa_rot_data_wr(psa_msg_t *msg)
     psa_reply(msg->handle, PSA_SUCCESS);
 
     /* Process second call request */
-    if (VAL_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
+    if (VAL_IS_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
     {
         psa_reply(msg->handle, -2);
         return;
@@ -561,7 +561,7 @@ void driver_test_isolation_psa_rot_stack_wr(psa_msg_t *msg)
     psa_reply(msg->handle, PSA_SUCCESS);
 
     /* Process second call request */
-    if (VAL_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
+    if (VAL_IS_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
     {
         psa_reply(msg->handle, -2);
         return;
@@ -624,7 +624,7 @@ void driver_test_isolation_psa_rot_heap_wr(psa_msg_t *msg)
     psa_reply(msg->handle, PSA_SUCCESS);
 
     /* Process second call request */
-    if (VAL_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
+    if (VAL_IS_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
     {
         psa_reply(msg->handle, -2);
         return;
@@ -658,7 +658,7 @@ void driver_test_isolation_psa_rot_mmio_rd(psa_msg_t *msg)
 {
     addr_t psa_rot_mmio_addr;
 
-    if (VAL_ERROR(val_get_driver_mmio_addr(&psa_rot_mmio_addr)))
+    if (VAL_IS_ERROR(val_get_driver_mmio_addr(&psa_rot_mmio_addr)))
     {
         psa_reply(msg->handle, -2);
         return;
@@ -674,7 +674,7 @@ void driver_test_isolation_psa_rot_mmio_wr(psa_msg_t *msg)
 {
     addr_t psa_rot_mmio_addr;
 
-    if (VAL_ERROR(val_get_driver_mmio_addr(&psa_rot_mmio_addr)))
+    if (VAL_IS_ERROR(val_get_driver_mmio_addr(&psa_rot_mmio_addr)))
     {
         psa_reply(msg->handle, -2);
         return;
@@ -693,7 +693,7 @@ void driver_test_isolation_psa_rot_mmio_wr(psa_msg_t *msg)
    psa_reply(msg->handle, PSA_SUCCESS);
 
     /* Process second call request */
-    if (VAL_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
+    if (VAL_IS_ERROR(process_call_request(DRIVER_TEST_SIGNAL, msg)))
     {
         psa_reply(msg->handle, -2);
         return;

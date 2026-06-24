@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -306,7 +306,7 @@ wait3:
 
         if ((msg->type != PSA_IPC_DISCONNECT) || (msg->handle <= 0))
         {
-            val_print(ERROR, "\tpsa_get failed for disconnect massage\n", 0);
+            val_print(ERROR, "\tpsa_get failed for disconnect message\n", 0);
             res = VAL_STATUS_ERROR;
         }
         else
@@ -350,7 +350,7 @@ STATIC_DECLARE val_status_t val_execute_secure_tests(test_info_ipc_t test_info,
 #else
         status = val_execute_secure_test_func(&handle, test_info, SERVER_TEST_DISPATCHER_SID);
 #endif
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val_print(ERROR, "[Check %d] START\n", i);
             return status;
@@ -361,10 +361,10 @@ STATIC_DECLARE val_status_t val_execute_secure_tests(test_info_ipc_t test_info,
         }
         /* keep track of the test block numbers, helps when the panic happened */
         status = val_set_test_data(NVM_TEST_DATA1, i);
-    	if (VAL_ERROR(status))
-    	{
-    	   return VAL_STATUS_ERROR;
-    	}
+        if (VAL_IS_ERROR(status))
+        {
+            return VAL_STATUS_ERROR;
+        }
         /* Execute client tests */
         test_status = tests_list[i](CALLER_SECURE);
 
@@ -377,7 +377,7 @@ STATIC_DECLARE val_status_t val_execute_secure_tests(test_info_ipc_t test_info,
             val_print(DBG, "[Check %d] SKIPPED\n", i);
             return status;
         }
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val_print(DBG, "[Check %d] FAILED\n", i);
             return status;
@@ -483,7 +483,7 @@ STATIC_DECLARE val_status_t val_get_secure_test_result(psa_handle_t *handle)
 */
 STATIC_DECLARE val_status_t val_err_check_set(uint32_t checkpoint, val_status_t status)
 {
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         val_print(ERROR, "\tCheckpoint %d : ", checkpoint);
         val_print(ERROR, "Error Code=0x%x \n", status);
@@ -557,7 +557,7 @@ STATIC_DECLARE val_status_t val_set_boot_flag(boot_state_t state)
 
    boot.state = state;
    status = val_nvmem_write(VAL_NVM_OFFSET(NVM_BOOT), &boot, sizeof(boot_t));
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val_print(ERROR, "\tval_nvmem_write failed Error=0x%x\n", status);
        return status;
@@ -577,7 +577,7 @@ STATIC_DECLARE val_status_t val_set_test_data(int32_t nvm_index, int32_t test_da
    val_status_t     status;
 
    status = val_nvmem_write(VAL_NVM_OFFSET(nvm_index), &test_data, sizeof(int32_t));
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val_print(ERROR, "\tval_nvmem_write failed for test data. Error=0x%x\n", status);
        return status;

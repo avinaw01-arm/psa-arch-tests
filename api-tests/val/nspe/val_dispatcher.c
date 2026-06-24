@@ -1,7 +1,9 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
- * Copyright 2023 NXP
+ *
+ * Copyright (c) 2023, NXP
+ * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,7 +204,7 @@ int32_t val_dispatcher(test_id_t test_id_prev)
     do
     {
         status = val_get_boot_flag(&boot.state);
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             return status;
         }
@@ -215,7 +217,7 @@ int32_t val_dispatcher(test_id_t test_id_prev)
             val_set_status(RESULT_ERROR(VAL_STATUS_ERROR));
             status = val_nvm_read(VAL_NVM_OFFSET(NVM_CUR_TEST_NUM_INDEX),
                                     &test_id, sizeof(test_id_t));
-            if (VAL_ERROR(status))
+            if (VAL_IS_ERROR(status))
             {
                 val_print(ERROR, "\n\tNVMEM read error", 0);
                 return status;
@@ -231,7 +233,7 @@ int32_t val_dispatcher(test_id_t test_id_prev)
             val_set_status(RESULT_FAIL(VAL_STATUS_BOOT_EXPECTED_BUT_FAILED));
             status = val_nvm_read(VAL_NVM_OFFSET(NVM_CUR_TEST_NUM_INDEX),
                                     &test_id, sizeof(test_id_t));
-            if (VAL_ERROR(status))
+            if (VAL_IS_ERROR(status))
             {
                 val_print(ERROR, "\n\tNVMEM read error", 0);
                 return status;
@@ -241,7 +243,7 @@ int32_t val_dispatcher(test_id_t test_id_prev)
         {
             status = val_test_load(&test_id, test_id_prev);
 
-            if (VAL_ERROR(status))
+            if (VAL_IS_ERROR(status))
             {
                 return status;
             }
@@ -252,7 +254,7 @@ int32_t val_dispatcher(test_id_t test_id_prev)
 
             status = val_nvm_write(VAL_NVM_OFFSET(NVM_CUR_TEST_NUM_INDEX),
                                      &test_id, sizeof(test_id_t));
-            if (VAL_ERROR(status))
+            if (VAL_IS_ERROR(status))
             {
                 val_print(ERROR, "\n\tNVMEM write error", 0);
                 return status;
@@ -275,7 +277,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
             {
                 /* Set boot.state to BOOT_NOT_EXPECTED to catch unexpected test hang */
                 status = val_set_boot_flag(BOOT_NOT_EXPECTED);
-                if (VAL_ERROR(status))
+                if (VAL_IS_ERROR(status))
                 {
                     return status;
                 }
@@ -291,7 +293,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
 
         /* Reset boot.state to UNKNOWN before launching next test */
         status = val_set_boot_flag(BOOT_UNKNOWN);
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             return status;
         }
@@ -306,7 +308,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
                   val_nvm_read(VAL_NVM_OFFSET(NVM_TOTAL_ERROR_INDEX),
                         &test_count.total_error, sizeof(uint32_t)));
 
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val_print(ERROR, "\n\tNVMEM read error", 0);
             return status;
@@ -323,7 +325,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
                   val_nvm_write(VAL_NVM_OFFSET(NVM_TOTAL_ERROR_INDEX),
                        &test_count.total_error, sizeof(uint32_t)));
 
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val_print(ERROR, "\n\tNVMEM write error", 0);
             return status;
@@ -332,7 +334,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
         test_id_prev = test_id;
         status = val_nvm_write(VAL_NVM_OFFSET(NVM_PREVIOUS_TEST_ID),
                                  &test_id, sizeof(test_id_t));
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val_print(ERROR, "\n\tNVMEM write error", 0);
             return status;
@@ -349,7 +351,7 @@ build. For PSA functional API certification, all tests must be run.\n", 0);
              val_nvm_read(VAL_NVM_OFFSET(NVM_TOTAL_ERROR_INDEX),
                     &test_count.total_error, sizeof(uint32_t)));
 
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val_print(ERROR, "\n\tNVMEM read error", 0);
        return status;

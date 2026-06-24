@@ -1,6 +1,8 @@
 #/** @file
-# * Copyright (c) 2023, Arm Limited or its affiliates. All rights reserved.
-# * Copyright 2023 NXP
+# * Copyright (c) 2023, 2026, Arm Limited or its affiliates. All rights reserved.
+# * SPDX-License-Identifier : Apache-2.0
+# *
+# * Copyright (c) 2023, NXP
 # * SPDX-License-Identifier : Apache-2.0
 # *
 # * Licensed under the Apache License, Version 2.0 (the "License");

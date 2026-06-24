@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +40,7 @@ void test_entry(val_api_t *val_api, psa_api_t *psa_api)
 
     /* Execute list of tests available in test[num]_client_tests_list from Non-secure side*/
     status = val->execute_non_secure_tests(TEST_NUM, test_i072_client_tests_list, TRUE);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         goto test_exit;
     }

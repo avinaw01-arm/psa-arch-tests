@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,14 +97,14 @@ val_status_t val_wd_reprogram_timer(wd_timeout_type_t timeout_type)
 
     /* Initialise watchdog */
     status = val_wd_timer_init(timeout_type);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         return status;
     }
 
     /* Enable watchdog Timer */
     status = val_watchdog_enable();
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
     {
         return status;
     }

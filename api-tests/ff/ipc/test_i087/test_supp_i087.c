@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,7 +70,7 @@ int32_t server_test_sp_read_other_sp_mmio(void)
     addr_t          app_rot_addr;
 
     status = get_mmio_addr(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     return send_secure_partition_address(&app_rot_addr);
@@ -83,13 +83,13 @@ int32_t server_test_sp_write_other_sp_mmio(void)
 
 
     status = get_mmio_addr(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Initialise mmio address */
     *(uint32_t *)app_rot_addr = (uint32_t)DATA_VALUE;
     status = send_secure_partition_address(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Reached here means there could be write succeed or ignored */
@@ -164,7 +164,7 @@ int32_t server_test_sp_read_other_sp_mmio(void)
     addr_t          app_rot_addr;
 
     status = get_mmio_addr(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     return send_secure_partition_address(&app_rot_addr);
@@ -177,13 +177,13 @@ int32_t server_test_sp_write_other_sp_mmio(void)
     psa_msg_t       msg = {0};
 
     status = get_mmio_addr(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Initialise mmio address */
     *(uint32_t *)app_rot_addr = (uint32_t)DATA_VALUE;
     status = send_secure_partition_address(&app_rot_addr);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Wait for write to get performed by client */

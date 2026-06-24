@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -61,7 +61,7 @@ int32_t client_test_nspe_read_app_rot_heap(caller_security_t caller __UNUSED)
 
    val->print(TEST, "Check 1: Test NSPE reading APP-RoT heap\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&app_rot_addr)))
+   if (VAL_IS_ERROR(get_secure_partition_address(&app_rot_addr)))
        return VAL_STATUS_ERROR;
 
    /* Setting boot.state before test check */
@@ -99,7 +99,7 @@ int32_t client_test_nspe_write_app_rot_heap(caller_security_t caller __UNUSED)
 
    val->print(TEST, "Check 2: Test NSPE writing APP-RoT heap\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&app_rot_addr)))
+   if (VAL_IS_ERROR(get_secure_partition_address(&app_rot_addr)))
        return VAL_STATUS_ERROR;
 
    /* Setting boot.state before test check */
@@ -175,7 +175,7 @@ int32_t client_test_nspe_read_app_rot_heap(caller_security_t caller __UNUSED)
 
    val->print(TEST, "Check 1: Test NSPE reading APP-RoT heap\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&app_rot_addr)))
+   if (VAL_IS_ERROR(get_secure_partition_address(&app_rot_addr)))
        return VAL_STATUS_ERROR;
 
    /* Setting boot.state before test check */
@@ -213,7 +213,7 @@ int32_t client_test_nspe_write_app_rot_heap(caller_security_t caller __UNUSED)
 
    val->print(TEST, "Check 2: Test NSPE writing APP-RoT heap\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&app_rot_addr)))
+   if (VAL_IS_ERROR(get_secure_partition_address(&app_rot_addr)))
        return VAL_STATUS_ERROR;
 
    /* Setting boot.state before test check */

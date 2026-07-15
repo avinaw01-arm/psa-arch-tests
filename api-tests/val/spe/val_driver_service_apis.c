@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -174,7 +174,7 @@ val_status_t val_driver_private_set_boot_flag_fn(boot_state_t state)
                                VAL_NVM_OFFSET(NVM_BOOT),
                                &boot,
                                sizeof(boot_t));
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val_print_sf(ERROR, "val_nvmem_write_sf failed Error=0x%x\n", status);
        return status;

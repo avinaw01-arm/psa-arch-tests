@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,7 +64,7 @@ int32_t client_test_secure_access_only_connection(caller_security_t caller)
    {
        status = val->set_boot_flag(BOOT_EXPECTED_NS);
    }
-   if (VAL_ERROR(status))
+   if (VAL_IS_ERROR(status))
    {
        val->print(ERROR, "\tFailed to set boot flag before check\n", 0);
        return status;

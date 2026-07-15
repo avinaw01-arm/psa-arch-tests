@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -169,7 +169,7 @@ int32_t client_test_psa_call_with_allowed_status_code(caller_security_t caller _
    {
         /* Compare the status code sent by RoT service with expected code */
         status = psa_call_with_null_msg(expected_status_code[i]);
-        if (VAL_ERROR(status))
+        if (VAL_IS_ERROR(status))
         {
             val->print(ERROR,
                        "\tpsa_call failed for status code=0x%x\n", expected_status_code[i]);
@@ -260,12 +260,12 @@ int32_t client_test_spm_concurrent_connect_limit(caller_security_t caller __UNUS
 
    if (caller == CALLER_SECURE)
    {
-	   status = val->set_boot_flag(BOOT_EXPECTED_S);
-	if (VAL_ERROR(status))
-	{
-         	   return VAL_STATUS_ERROR;
-	}
-   }
+        status = val->set_boot_flag(BOOT_EXPECTED_S);
+        if (VAL_IS_ERROR(status))
+        {
+            return VAL_STATUS_ERROR;
+        }
+    }
 
    /* Execute psa_connect in a loop until it returns
     * PSA_ERROR_CONNECTION_REFUSED OR PSA_ERROR_CONNECTION_BUSY

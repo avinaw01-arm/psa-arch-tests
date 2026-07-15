@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,7 +49,7 @@
 #define TEST_NUM_BIT         32
 #define TEST_NUM_MASK        0xFFFFFFFF
 
-#define VAL_ERROR(status)       ((status & TEST_STATUS_CODE_MASK) ? 1 : 0)
+#define VAL_IS_ERROR(status)       ((status & TEST_STATUS_CODE_MASK) ? 1 : 0)
 
 
 /* Test Defines */

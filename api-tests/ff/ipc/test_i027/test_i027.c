@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,6 +97,13 @@ int32_t client_test_psa_drop_connection(caller_security_t caller)
 
        /* close the handle after receving the programmer error*/
        psa->close(handle);
+
+       /* Setting boot.state before subsequent test check */
+       if (val->set_boot_flag(BOOT_EXPECTED_NS))
+       {
+           val->print(ERROR, "\tFailed to set boot flag before subsequent check\n", 0);
+           return VAL_STATUS_ERROR;
+       }
 
        /* If this call returns PSA_ERROR_PROGRAMMER_ERROR,
         * when a valid connection handle was provided, then

@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -401,6 +401,11 @@
 #define ARCH_TEST_SPAKE2P_HMAC
 #define ARCH_TEST_SPAKE2P_CMAC
 #define ARCH_TEST_SPAKE2P_MATTER
+
+/* Disable PSA API calls for PAKE and Key-agreement test cases */
+#define DISABLE_CRYPTO_PAKE
+#define DISABLE_CRYPTO_1_1_0
+#define DISABLE_KEY_AGREEMENT
 
 #include "pal_crypto_config_check.h"
 

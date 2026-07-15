@@ -107,4 +107,3 @@ static const ecc_key_t attest_key = {
 };
 
 #endif /* _PAL_ATTESTATION_CONFIG_H_ */
-

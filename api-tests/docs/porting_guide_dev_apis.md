@@ -45,6 +45,7 @@ The test suite requires access to the following peripherals:
   - One UART to print Test NSPE messages
   - One Watchdog timer to help recover from any fatal error conditions
   - Non-volatile memory support to preserve test status over watchdog timer reset. Each byte of this region must be initialised to FF at power on reset.
+  - Define the following macros in your Crypto config headers to disable PSA API calls related to PAKE and Key-agreement test cases: DISABLE_CRYPTO_PAKE, DISABLE_CRYPTO_1_1_0, DISABLE_KEY_AGREEMENT. For reference, please see the similar implementation in: **api-tests/platform/targets/tgt_dev_apis_tfm_an521/nspe/pal_crypto_config.h**.
 
 
 ## List of PAL APIs
@@ -76,4 +77,4 @@ Arm PSA test suite is distributed under Apache v2.0 License.
 
 --------------
 
-*Copyright (c) 2019-2025, Arm Limited and Contributors. All rights reserved.*
+*Copyright (c) 2019-2026, Arm Limited and Contributors. All rights reserved.*

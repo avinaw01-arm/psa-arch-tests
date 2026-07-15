@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,7 +68,7 @@ int32_t client_test_app_rot_read_psa_rot_stack(caller_security_t caller __UNUSED
 
    val->print(TEST, "Check 1: Test APP-RoT reading PSA-RoT stack\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&handle,
+   if (VAL_IS_ERROR(get_secure_partition_address(&handle,
                                               &psa_rot_addr,
                                               TEST_ISOLATION_PSA_ROT_STACK_RD)))
        return VAL_STATUS_ERROR;
@@ -109,7 +109,7 @@ int32_t client_test_app_rot_write_psa_rot_stack(caller_security_t caller __UNUSE
 
    val->print(TEST, "Check 2: Test APP-RoT writing PSA-RoT stack\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&handle,
+   if (VAL_IS_ERROR(get_secure_partition_address(&handle,
                                               &psa_rot_addr,
                                               TEST_ISOLATION_PSA_ROT_STACK_WR)))
        return VAL_STATUS_ERROR;
@@ -120,7 +120,7 @@ int32_t client_test_app_rot_write_psa_rot_stack(caller_security_t caller __UNUSE
    *(uint32_t *)psa_rot_addr = (uint32_t)data;
 
    /* Handshake with driver to decide write status */
-   if (VAL_ERROR(get_driver_status(&handle)))
+   if (VAL_IS_ERROR(get_driver_status(&handle)))
    {
        return VAL_STATUS_DRIVER_FN_FAILED;
    }
@@ -184,7 +184,7 @@ int32_t client_test_app_rot_read_psa_rot_stack(caller_security_t caller __UNUSED
 
    val->print(TEST, "Check 1: Test APP-RoT reading PSA-RoT stack\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&handle,
+   if (VAL_IS_ERROR(get_secure_partition_address(&handle,
                                               &psa_rot_addr,
                                               TEST_ISOLATION_PSA_ROT_STACK_RD)))
        return VAL_STATUS_ERROR;
@@ -227,7 +227,7 @@ int32_t client_test_app_rot_write_psa_rot_stack(caller_security_t caller __UNUSE
 
    val->print(TEST, "Check 2: Test APP-RoT writing PSA-RoT stack\n", 0);
 
-   if (VAL_ERROR(get_secure_partition_address(&handle,
+   if (VAL_IS_ERROR(get_secure_partition_address(&handle,
                                               &psa_rot_addr,
                                               TEST_ISOLATION_PSA_ROT_STACK_WR)))
        return VAL_STATUS_ERROR;
@@ -238,7 +238,7 @@ int32_t client_test_app_rot_write_psa_rot_stack(caller_security_t caller __UNUSE
    *(uint32_t *)psa_rot_addr = (uint32_t)data;
 
    /* Handshake with driver to decide write status */
-   if (VAL_ERROR(get_driver_status(&handle)))
+   if (VAL_IS_ERROR(get_driver_status(&handle)))
    {
        close_driver_fn(&handle);
        return VAL_STATUS_DRIVER_FN_FAILED;

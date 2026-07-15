@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2018-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2018-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,7 +57,7 @@ void server_main(void)
                         val_print(ERROR, "could not read dispatcher payload\n", 0);
                         status = VAL_STATUS_READ_FAILED;
                     }
-                    if (VAL_ERROR(status))
+                    if (VAL_IS_ERROR(status))
                     {
                         psa_reply(msg.handle, PSA_ERROR_CONNECTION_REFUSED);
                         break;

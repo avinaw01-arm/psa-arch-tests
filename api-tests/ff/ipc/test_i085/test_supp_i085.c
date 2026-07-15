@@ -1,5 +1,5 @@
 /** @file
- * Copyright (c) 2019-2025, Arm Limited or its affiliates. All rights reserved.
+ * Copyright (c) 2019-2026, Arm Limited or its affiliates. All rights reserved.
  * SPDX-License-Identifier : Apache-2.0
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,7 +79,7 @@ int32_t server_test_sp_write_other_sp_stack(void)
 
 
     status = send_secure_partition_address(&l_test_i085);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Reached here means there could be write succeed or ignored */
@@ -163,7 +163,7 @@ int32_t server_test_sp_write_other_sp_stack(void)
     psa_msg_t       msg = {0};
 
     status = send_secure_partition_address(&l_test_i085);
-    if (VAL_ERROR(status))
+    if (VAL_IS_ERROR(status))
         return status;
 
     /* Wait for write to get performed by client */
